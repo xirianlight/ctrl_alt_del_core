@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6B2545F516DD527900D61576 /* Annotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B2545F416DD527900D61576 /* Annotation.m */; };
+		6B2545F716DD53D100D61576 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B2545F616DD53D100D61576 /* MapKit.framework */; };
 		6B59BCC916D5A54E003FC5D7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B59BCC816D5A54E003FC5D7 /* UIKit.framework */; };
 		6B59BCCB16D5A54E003FC5D7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B59BCCA16D5A54E003FC5D7 /* Foundation.framework */; };
 		6B59BCCD16D5A54E003FC5D7 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B59BCCC16D5A54E003FC5D7 /* CoreGraphics.framework */; };
@@ -22,6 +24,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6B2545F316DD527900D61576 /* Annotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Annotation.h; sourceTree = "<group>"; };
+		6B2545F416DD527900D61576 /* Annotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Annotation.m; sourceTree = "<group>"; };
+		6B2545F616DD53D100D61576 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		6B59BCC516D5A54E003FC5D7 /* Photo Kooky.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Photo Kooky.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B59BCC816D5A54E003FC5D7 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		6B59BCCA16D5A54E003FC5D7 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -47,6 +52,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6B2545F716DD53D100D61576 /* MapKit.framework in Frameworks */,
 				6B59BCC916D5A54E003FC5D7 /* UIKit.framework in Frameworks */,
 				6B59BCCB16D5A54E003FC5D7 /* Foundation.framework in Frameworks */,
 				6B59BCCD16D5A54E003FC5D7 /* CoreGraphics.framework in Frameworks */,
@@ -59,6 +65,7 @@
 		6B59BCBC16D5A54E003FC5D7 = {
 			isa = PBXGroup;
 			children = (
+				6B2545F616DD53D100D61576 /* MapKit.framework */,
 				6B59BCCE16D5A54E003FC5D7 /* Photo Kooky */,
 				6B59BCC716D5A54E003FC5D7 /* Frameworks */,
 				6B59BCC616D5A54E003FC5D7 /* Products */,
@@ -93,6 +100,8 @@
 				6B59BCEC16D6BB94003FC5D7 /* photoDetailViewController.m */,
 				6B59BCE316D5A54E003FC5D7 /* ViewController.h */,
 				6B59BCE416D5A54E003FC5D7 /* ViewController.m */,
+				6B2545F316DD527900D61576 /* Annotation.h */,
+				6B2545F416DD527900D61576 /* Annotation.m */,
 				6B59BCCF16D5A54E003FC5D7 /* Supporting Files */,
 			);
 			path = "Photo Kooky";
@@ -182,6 +191,7 @@
 				6B59BCD916D5A54E003FC5D7 /* AppDelegate.m in Sources */,
 				6B59BCE516D5A54E003FC5D7 /* ViewController.m in Sources */,
 				6B59BCED16D6BB94003FC5D7 /* photoDetailViewController.m in Sources */,
+				6B2545F516DD527900D61576 /* Annotation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

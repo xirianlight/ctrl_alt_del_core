@@ -9,6 +9,10 @@
 #import "photoDetailViewController.h"
 
 @interface photoDetailViewController ()
+{
+        __weak IBOutlet MKMapView *myMapView;
+    __weak IBOutlet MKMapView *detailMapView;
+}
 
 @end
 
@@ -16,6 +20,16 @@
 
 @synthesize imageToShow;
 @synthesize detailImageUIImage;
+@synthesize photoIdForDetailVC;
+@synthesize photoLatitudeForDetailVC;
+@synthesize photoLongitudeForDetailVC;
+
+
+/*
+
+http://api.flickr.com/services/rest/?method=flickr.photos.geo.getLocation&api_key=b4a287d18b3f7398ffb4ab9f1b961e22&photo_id=5856017477&format=json&nojsoncallback=1
+
+*/
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {

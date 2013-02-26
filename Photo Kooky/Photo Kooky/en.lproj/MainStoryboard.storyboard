@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12C3012" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="2">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12C60" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="2">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
     </dependencies>
@@ -100,7 +100,7 @@
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FKO-sO-mYT">
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="489" id="9Qo-Ca-HZy"/>
+                                    <constraint firstAttribute="height" constant="84" id="pYZ-EA-Wi3"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="277" translatesAutoresizingMaskIntoConstraints="NO" id="0rc-XT-JOf">
@@ -128,21 +128,33 @@
                                     <segue destination="HeX-tB-Ndy" kind="unwind" unwindAction="rewind:" id="dyE-j4-eY2"/>
                                 </connections>
                             </button>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="lbR-Pu-xZf">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="360" id="zvW-Hu-aVp"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="delegate" destination="PRM-sv-zoo" id="CUa-AV-Orn"/>
+                                </connections>
+                            </mapView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="0rc-XT-JOf" firstAttribute="leading" secondItem="HW6-WA-TiH" secondAttribute="leading" type="default" id="2py-gB-dLr"/>
+                            <constraint firstItem="lbR-Pu-xZf" firstAttribute="trailing" secondItem="HW6-WA-TiH" secondAttribute="trailing" type="default" id="ANy-x6-uf1"/>
                             <constraint firstItem="9ed-mJ-F2M" firstAttribute="bottom" secondItem="HW6-WA-TiH" secondAttribute="bottom" type="default" id="C1D-wy-Zrq"/>
-                            <constraint firstItem="FKO-sO-mYT" firstAttribute="top" secondItem="HW6-WA-TiH" secondAttribute="top" constant="-34" id="IZ2-3h-ZVr"/>
-                            <constraint firstItem="0rc-XT-JOf" firstAttribute="bottom" secondItem="HW6-WA-TiH" secondAttribute="bottom" type="default" id="Jfb-qZ-TQd"/>
                             <constraint firstItem="9ed-mJ-F2M" firstAttribute="trailing" secondItem="HW6-WA-TiH" secondAttribute="trailing" type="default" id="OrM-tu-l73"/>
                             <constraint firstItem="FKO-sO-mYT" firstAttribute="leading" secondItem="HW6-WA-TiH" secondAttribute="leading" type="default" id="Tty-Wa-ZhA"/>
-                            <constraint firstItem="9ed-mJ-F2M" firstAttribute="top" secondItem="0rc-XT-JOf" secondAttribute="top" type="default" id="YJz-6U-2Sg"/>
+                            <constraint firstItem="9ed-mJ-F2M" firstAttribute="top" secondItem="FKO-sO-mYT" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="WcO-9i-i4y"/>
+                            <constraint firstItem="lbR-Pu-xZf" firstAttribute="leading" secondItem="HW6-WA-TiH" secondAttribute="leading" type="default" id="gDA-UB-AV0"/>
+                            <constraint firstItem="lbR-Pu-xZf" firstAttribute="top" secondItem="HW6-WA-TiH" secondAttribute="top" type="default" id="nEK-Ge-0e3"/>
                             <constraint firstItem="FKO-sO-mYT" firstAttribute="trailing" secondItem="HW6-WA-TiH" secondAttribute="trailing" type="default" id="xPO-aL-dq5"/>
+                            <constraint firstItem="0rc-XT-JOf" firstAttribute="centerY" secondItem="9ed-mJ-F2M" secondAttribute="centerY" type="default" id="y4Z-TI-zVn"/>
+                            <constraint firstItem="0rc-XT-JOf" firstAttribute="top" secondItem="FKO-sO-mYT" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="zxW-yX-XjA"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="detailImageUIImage" destination="FKO-sO-mYT" id="MA9-TX-fqR"/>
+                        <outlet property="detailMapView" destination="lbR-Pu-xZf" id="C13-Vc-Yoj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iY3-bL-tIk" userLabel="First Responder" sceneMemberID="firstResponder"/>

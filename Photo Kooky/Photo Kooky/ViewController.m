@@ -17,6 +17,9 @@
     NSArray *arrayForPhotosArray;
     NSString *searchText;
     UIImage *imageToTransfer;
+    NSString *idStringToPass;
+    NSString *photoLatitude;
+    NSString *photoLongitude;
     
     __weak IBOutlet UITextField *searchTextField;
     
@@ -80,8 +83,15 @@
     NSString *farmString = [dictionaryForSinglePhoto valueForKey:@"farm"];
     NSString *serverString = [dictionaryForSinglePhoto valueForKey:@"server"];
     NSString *idString = [dictionaryForSinglePhoto valueForKey:@"id"];
+    idStringToPass = idString;
     NSString *secretString = [dictionaryForSinglePhoto valueForKey:@"secret"];
     NSString *titleString  = [dictionaryForSinglePhoto valueForKey:@"title"];
+    
+    photoLatitude = [dictionaryForSinglePhoto valueForKey:@"latitude"];
+    photoLongitude = [dictionaryForSinglePhoto valueForKey:@"longitude"];
+    
+    
+    
     NSLog(@"%@", titleString);
     
     //making that info into a request for a photo
@@ -166,7 +176,9 @@
         imageToTransfer =  myCell.imageView.image;
         
         photoDetailViewController *phvc = [segue destinationViewController];
-      
+        phvc.photoIdForDetailVC = idStringToPass;
+        phvc.photoLongitudeForDetailVC = photoLongitude;
+        phvc.photoLatitudeForDetailVC = photoLatitude;
         phvc.imageToShow = imageToTransfer;
     
         
@@ -186,7 +198,7 @@
     //adding for bbox
 //     NSString *flickrURLString =[NSString stringWithFormat:@"http://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=b4a287d18b3f7398ffb4ab9f1b961e22&bbox-86.634741,41.894031,-86.634743,41.894033&accuracy=14&tags=%@&format=json&nojsoncallback=1", searchText];
  
-    NSString *flickrURLString =[NSString stringWithFormat:@"http://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=b4a287d18b3f7398ffb4ab9f1b961e22&lat=41.894032&lon=-87.634742&radius=3&accuracy=14&tags=%@&format=json&nojsoncallback=1", searchText];
+    NSString *flickrURLString =[NSString stringWithFormat:@"http://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=b4a287d18b3f7398ffb4ab9f1b961e22&lat=41.894032&lon=-87.634742&radius=3&extras=geo&accuracy=14&tags=%@&format=json&nojsoncallback=1", searchText];
     
     
     NSURL *flickrURL = [NSURL URLWithString:flickrURLString];
