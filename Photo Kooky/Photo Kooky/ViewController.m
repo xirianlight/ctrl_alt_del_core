@@ -20,14 +20,12 @@
     NSString *idStringToPass;
     NSString *photoLatitude;
     NSString *photoLongitude;
+    NSString *photoName;        //This is to pass to the second viewController
     
     __weak IBOutlet UITextField *searchTextField;
-    
     __weak IBOutlet UITableView *photoTableView;
     __weak IBOutlet UIActivityIndicatorView *activityWheel;
-    
-    //__weak IBOutlet UIActivityIndicatorView *activityIndicatorWheel;
-    
+        
 }
 
 - (IBAction)searchButton:(id)sender;
@@ -42,136 +40,94 @@
 {
     [super viewDidLoad];
 
-
-    
 }
 
+#pragma UITableView methods
 
-// NUMBER OF ROWS
-
+    // NUMBER OF ROWS
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if (photosDictionary == nil) {
+    if (photosDictionary == nil)
+    {
         return 0;
-    }else{
-        //NSArray *arrayForPhotosArray = [photosDictionary valueForKey:@"photo"];
-         //NSLog(@"%@", arrayForPhotosArray);
-        
-        
+    }
+    else
+    {
         return 20;
-        //return [arrayForPhotosArray count];
-        //int arrayCount = [arrayForPhotosArray count];
-        //NSLog(@"%i", arrayCount);
-        
     }
 }
 
-
-// NUMBER OF CELLS
+    // NUMBER OF CELLS
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    //[activityIndicatorWheel startAnimating];
-    [activityWheel startAnimating];
-    
-    //setting up my reusable cell
+{    
+        //setting up my reusable cell
     UITableViewCell *myCustomCell =[tableView dequeueReusableCellWithIdentifier:@"photoCellReuseID"];
     
-    
-    //collecting all the data from photosDictionary
-    //NSArray *arrayForPhotosArray = [photosDictionary valueForKey:@"photo"];
+        //collecting all the data from photosDictionary
     NSDictionary *dictionaryForSinglePhoto = [arrayForPhotosArray objectAtIndex:indexPath.row];
     NSString *farmString = [dictionaryForSinglePhoto valueForKey:@"farm"];
     NSString *serverString = [dictionaryForSinglePhoto valueForKey:@"server"];
     NSString *idString = [dictionaryForSinglePhoto valueForKey:@"id"];
+        //The following (idString) bay be removable, since we made it to originally look up photo GPS data.
     idStringToPass = idString;
     NSString *secretString = [dictionaryForSinglePhoto valueForKey:@"secret"];
-    NSString *titleString  = [dictionaryForSinglePhoto valueForKey:@"title"];
+    NSString *titleString  = [dictionaryForSinglePhoto valueForKey:@"title"];    
     
+        //New code to include photo Longitude and Latitude as outputs.
     photoLatitude = [dictionaryForSinglePhoto valueForKey:@"latitude"];
     photoLongitude = [dictionaryForSinglePhoto valueForKey:@"longitude"];
     
-    
-    
+        //Logs out the titles of photos as they load. Nice
     NSLog(@"%@", titleString);
     
-    //making that info into a request for a photo
-    //.................................................................................
-    //NSString *newText = [NSString stringWithFormat:@"%@%@", word1, word2];
+        //making that info into a request for a photo
     
     NSString *photoURLString = [NSString stringWithFormat:@"http://farm%@.staticflickr.com/%@/%@_%@_m.jpg", farmString, serverString, idString, secretString];
-    NSURL *photoURL = [NSURL URLWithString:photoURLString];
-    //NSMutableURLRequest *photoURLRequest = [NSMutableURLRequest requestWithURL:photoURL];
+    NSURL *photoURL = [NSURL URLWithString:photoURLString];    
     
-    
-    //making the request online for the photo
-    
-    
-    //NSString *spyPictureString =[spyDictionary valueForKey:@"avatar_url"];
-    //NSURL *spyPictureURL = [NSURL URLWithString:spyPictureString];
-    
+        //making the request online for the photo
     NSData *photoData = [NSData dataWithContentsOfURL:photoURL];
     UIImage *photoImage = [UIImage imageWithData:photoData];
-    
+        //Set textfield and images to data from the flickr array
+        //Hide both fields to allow for custom textField and picture
     myCustomCell.imageView.image = photoImage;
+    myCustomCell.imageView.hidden = YES;
     myCustomCell.textLabel.text = titleString;
+    myCustomCell.textLabel.hidden = YES;
     
-        
-    [activityWheel stopAnimating];
+        //Find label/pics with tags and populate
+    UIView *pictureViewToImage = [myCustomCell viewWithTag:50];
+    UIImageView *picture2display = (UIImageView *) pictureViewToImage;
+    picture2display.image = photoImage;
+    
+    UIView *textLabel1 = [myCustomCell viewWithTag:51];
+    UILabel *textLabel = (UILabel *) textLabel1;
+    textLabel.font = [UIFont fontWithName:@"TrebuchetMS-Bold" size:16];
+    textLabel.text = [dictionaryForSinglePhoto valueForKey:@"title"];
     
     return myCustomCell;
     
-    
-    
 }
 
-
-
+#pragma User Interface buttons and keyboard
 
 -(BOOL)textFieldShouldReturn:(UITextField *)textField
 {
     [searchTextField resignFirstResponder];
+    [self submitFlickrSearch];
     return YES;
 }
-         
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 
--(IBAction)rewind:(UIStoryboardSegue *)segue{
-    
+#pragma Storyboard and segues
+
+-(IBAction)unwindToSearchTableView:(UIStoryboardSegue *)segue{
+    //Leave this blank, just to unwind the segue
 }
-////put the manual seque stuff in here
-//-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    
-//    UITableViewCell *myCell = [tableView cellForRowAtIndexPath:indexPath];
-//    // Access accessory View  as below.
-//    //UIView * myCellAccessoryView = myCell.accessoryView;
-//
-//    imageToTransfer =  myCell.imageView.image;
-//    
-//
-//
-//        //photoDetailViewController *phvc = (photoDetailViewController *)[segue destinationViewController];
-//    
-//    //[self performSegueWithIdentifier:@"toDetailSegue" sender:self];
-//
-//    
-//    //TargetViewController *targetVC =
-//    
-//    //(TargetViewController*)segue.destinationViewController;
-//    //targetVC.string1 = string1;
-//    
-//    //photoDetailViewController *phvc = [segue destinationViewController];
-//    //phvc.detailImageUIImage.image = imageToTransfer;
-//    
-//}
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if ([segue.identifier isEqualToString:@"toDetailSegue"]) {
+    if ([segue.identifier isEqualToString:@"toDetailSegue"])
+    {
         UITableViewCell *myCell = (UITableViewCell*)sender;
         imageToTransfer =  myCell.imageView.image;
         
@@ -181,62 +137,56 @@
         phvc.photoLatitudeForDetailVC = photoLatitude;
         phvc.imageToShow = imageToTransfer;
     
-        
     }
 }
 
-- (IBAction)searchButton:(id)sender {
-    
-    
-    
-    searchText = searchTextField.text;
+#pragma Flickr Specific
 
-    
-    //temp removal for testing bbox
-//    NSString *flickrURLString =[NSString stringWithFormat:@"http://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=b4a287d18b3f7398ffb4ab9f1b961e22&tags=%@&format=json&nojsoncallback=1", searchText];
-    
-    //adding for bbox
-//     NSString *flickrURLString =[NSString stringWithFormat:@"http://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=b4a287d18b3f7398ffb4ab9f1b961e22&bbox-86.634741,41.894031,-86.634743,41.894033&accuracy=14&tags=%@&format=json&nojsoncallback=1", searchText];
- 
+- (void) submitFlickrSearch
+{
+    [activityWheel startAnimating];
+        //Set search text field as search query text.
+    searchText = searchTextField.text;
+        //Request pictures matching search query
+        //Please note that lat/lon/radius are hard-coded for now
     NSString *flickrURLString =[NSString stringWithFormat:@"http://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=b4a287d18b3f7398ffb4ab9f1b961e22&lat=41.894032&lon=-87.634742&radius=3&extras=geo&accuracy=14&tags=%@&format=json&nojsoncallback=1", searchText];
     
-    
+        //Code to go from URL string to JSON request
     NSURL *flickrURL = [NSURL URLWithString:flickrURLString];
     NSMutableURLRequest *flickrURLRequest = [NSMutableURLRequest requestWithURL:flickrURL];
-    
-    //put a GET header on the urlRequest
     flickrURLRequest.HTTPMethod = @"GET";
-    
-    //now connect.....
     [NSURLConnection sendAsynchronousRequest:flickrURLRequest
                                        queue:[NSOperationQueue mainQueue]
                            completionHandler:^void(NSURLResponse *myResponse, NSData *myData, NSError *myError)
      {
-         if (myError) {
+         if (myError)
+         {
              NSLog(@"%@", myError.localizedDescription);
-         }else{
+         }
+         else
+         {
              NSError *jsonError;
-             id  genericObjectWeKnowIsDictionary = [NSJSONSerialization JSONObjectWithData:myData
-                                                                                   options:NSJSONReadingAllowFragments
-                                                                                     error:&jsonError];
-             
-             //this is "type casting.  It takes the unknown id variable "generic.." and converts it to an NSArray pointer type and sets it to vokalSpies.
+             id  genericObjectWeKnowIsDictionary =
+             [NSJSONSerialization JSONObjectWithData:myData
+                                             options:NSJSONReadingAllowFragments
+                                               error:&jsonError];
+                //Extract usable search results from raw JSON data
              photosDictionary = (NSMutableDictionary *) genericObjectWeKnowIsDictionary;
              NSMutableDictionary *secondDictionary = [photosDictionary valueForKey:@"photos"];
              arrayForPhotosArray = [secondDictionary valueForKey:@"photo"];
              
-             
-             
-             //NSLog(@"%@",vokalSpies);
              NSLog(@"%@", [photosDictionary valueForKey:@"pages"]);
              
-             //reload data and stop animating MUST FIGURE THIS OUT
+             [activityWheel stopAnimating];
              [photoTableView reloadData];
              
          }
      }];
+}
 
-
-    
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
 }
 @end

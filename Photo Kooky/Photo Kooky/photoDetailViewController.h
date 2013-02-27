@@ -17,5 +17,7 @@
 @property (strong, nonatomic) NSString *photoIdForDetailVC;
 @property (strong, nonatomic) NSString *photoLatitudeForDetailVC;
 @property (strong, nonatomic) NSString *photoLongitudeForDetailVC;
+@property (strong, nonatomic) NSString * photoNameForLabel;
+
 
 @end

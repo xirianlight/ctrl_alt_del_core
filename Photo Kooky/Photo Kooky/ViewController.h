@@ -10,7 +10,7 @@
 
 @interface ViewController : UIViewController<UITableViewDelegate, UITableViewDelegate, UITextFieldDelegate>
 
--(IBAction)rewind:(UIStoryboardSegue *)segue;
+-(IBAction)unwindToSearchTableView:(UIStoryboardSegue *)segue;
 
 
 @end

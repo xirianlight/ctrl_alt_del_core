@@ -65,7 +65,6 @@
 		6B59BCBC16D5A54E003FC5D7 = {
 			isa = PBXGroup;
 			children = (
-				6B2545F616DD53D100D61576 /* MapKit.framework */,
 				6B59BCCE16D5A54E003FC5D7 /* Photo Kooky */,
 				6B59BCC716D5A54E003FC5D7 /* Frameworks */,
 				6B59BCC616D5A54E003FC5D7 /* Products */,
@@ -83,6 +82,7 @@
 		6B59BCC716D5A54E003FC5D7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6B2545F616DD53D100D61576 /* MapKit.framework */,
 				6B59BCC816D5A54E003FC5D7 /* UIKit.framework */,
 				6B59BCCA16D5A54E003FC5D7 /* Foundation.framework */,
 				6B59BCCC16D5A54E003FC5D7 /* CoreGraphics.framework */,

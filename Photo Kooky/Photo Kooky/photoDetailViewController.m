@@ -12,6 +12,7 @@
 {
         __weak IBOutlet MKMapView *myMapView;
     __weak IBOutlet MKMapView *detailMapView;
+    __weak IBOutlet UILabel *photoTitleLabel;
 }
 
 @end
@@ -34,7 +35,8 @@ http://api.flickr.com/services/rest/?method=flickr.photos.geo.getLocation&api_ke
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
+    if (self)
+    {
         // Custom initialization
     }
     return self;
@@ -44,7 +46,9 @@ http://api.flickr.com/services/rest/?method=flickr.photos.geo.getLocation&api_ke
 {
     [super viewDidLoad];
     [self detailImageUIImage].image = imageToShow;
-	// Do any additional setup after loading the view.
+        //This doesn't work yet, but will eventually take the
+        //name of the picture from the selected row & display it
+    photoTitleLabel.text = self.photoNameForLabel;
 }
 
 - (void)didReceiveMemoryWarning
