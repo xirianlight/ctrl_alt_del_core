@@ -136,6 +136,10 @@
         phvc.photoLongitudeForDetailVC = photoLongitude;
         phvc.photoLatitudeForDetailVC = photoLatitude;
         phvc.imageToShow = imageToTransfer;
+        
+        NSLog(@"the latitude is %@", photoLatitude);
+        NSLog(@"the longitude is %@", photoLongitude);
+        
     
     }
 }
@@ -149,7 +153,18 @@
     searchText = searchTextField.text;
         //Request pictures matching search query
         //Please note that lat/lon/radius are hard-coded for now
+    
+    
     NSString *flickrURLString =[NSString stringWithFormat:@"http://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=b4a287d18b3f7398ffb4ab9f1b961e22&lat=41.894032&lon=-87.634742&radius=3&extras=geo&accuracy=14&tags=%@&format=json&nojsoncallback=1", searchText];
+    
+    /*
+    //preparing search URL to take current location - need to create searchLatString and searchLonString variables...........
+     
+     PART OF WHAT TO DO NEXT!
+     
+        NSString *flickrURLString =[NSString stringWithFormat:@"http://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=b4a287d18b3f7398ffb4ab9f1b961e22&lat=%@&lon=%@&radius=3&extras=geo&accuracy=14&tags=%@&format=json&nojsoncallback=1",searchLatString, searchLonString, searchText];
+    */
+    
     
         //Code to go from URL string to JSON request
     NSURL *flickrURL = [NSURL URLWithString:flickrURLString];

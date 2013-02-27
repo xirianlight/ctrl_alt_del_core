@@ -21,6 +21,8 @@
 		6B59BCE216D5A54E003FC5D7 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B59BCE016D5A54E003FC5D7 /* MainStoryboard.storyboard */; };
 		6B59BCE516D5A54E003FC5D7 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B59BCE416D5A54E003FC5D7 /* ViewController.m */; };
 		6B59BCED16D6BB94003FC5D7 /* photoDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B59BCEC16D6BB94003FC5D7 /* photoDetailViewController.m */; };
+		6BC5802116DDBAE600CE65E8 /* MMControllerDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BC5802016DDBAE600CE65E8 /* MMControllerDelegate.m */; };
+		6BC5802316DDC17200CE65E8 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BC5802216DDC17200CE65E8 /* CoreLocation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +47,9 @@
 		6B59BCE416D5A54E003FC5D7 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		6B59BCEB16D6BB94003FC5D7 /* photoDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = photoDetailViewController.h; sourceTree = "<group>"; };
 		6B59BCEC16D6BB94003FC5D7 /* photoDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = photoDetailViewController.m; sourceTree = "<group>"; };
+		6BC5801F16DDBAE600CE65E8 /* MMControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMControllerDelegate.h; sourceTree = "<group>"; };
+		6BC5802016DDBAE600CE65E8 /* MMControllerDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMControllerDelegate.m; sourceTree = "<group>"; };
+		6BC5802216DDC17200CE65E8 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,6 +57,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6BC5802316DDC17200CE65E8 /* CoreLocation.framework in Frameworks */,
 				6B2545F716DD53D100D61576 /* MapKit.framework in Frameworks */,
 				6B59BCC916D5A54E003FC5D7 /* UIKit.framework in Frameworks */,
 				6B59BCCB16D5A54E003FC5D7 /* Foundation.framework in Frameworks */,
@@ -82,6 +88,7 @@
 		6B59BCC716D5A54E003FC5D7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6BC5802216DDC17200CE65E8 /* CoreLocation.framework */,
 				6B2545F616DD53D100D61576 /* MapKit.framework */,
 				6B59BCC816D5A54E003FC5D7 /* UIKit.framework */,
 				6B59BCCA16D5A54E003FC5D7 /* Foundation.framework */,
@@ -103,6 +110,8 @@
 				6B2545F316DD527900D61576 /* Annotation.h */,
 				6B2545F416DD527900D61576 /* Annotation.m */,
 				6B59BCCF16D5A54E003FC5D7 /* Supporting Files */,
+				6BC5801F16DDBAE600CE65E8 /* MMControllerDelegate.h */,
+				6BC5802016DDBAE600CE65E8 /* MMControllerDelegate.m */,
 			);
 			path = "Photo Kooky";
 			sourceTree = "<group>";
@@ -192,6 +201,7 @@
 				6B59BCE516D5A54E003FC5D7 /* ViewController.m in Sources */,
 				6B59BCED16D6BB94003FC5D7 /* photoDetailViewController.m in Sources */,
 				6B2545F516DD527900D61576 /* Annotation.m in Sources */,
+				6BC5802116DDBAE600CE65E8 /* MMControllerDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
