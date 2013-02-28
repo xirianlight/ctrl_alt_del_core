@@ -9,10 +9,11 @@
 #import <UIKit/UIKit.h>
 #import "MMControllerDelegate.h"
 
-@interface ViewController : UIViewController<UITableViewDelegate, UITableViewDelegate, UITextFieldDelegate, CLLocationManagerDelegate>
+@interface ViewController : UIViewController <UITableViewDelegate, UITableViewDelegate, UITextFieldDelegate, CLLocationManagerDelegate>
 {
     //GPS variables
     CLLocationManager *missLocationManager;
+
 }
 
 @property (strong, nonatomic)  NSString *searchLatString;

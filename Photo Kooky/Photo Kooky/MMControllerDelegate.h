@@ -6,6 +6,9 @@
 //  Copyright (c) 2013 David Johnston. All rights reserved.
 //
 
+
+//THIS IS A DELEGATE THAT HANDLES LOCTIONS FROM THE APPLE LOCATION API
+
 #import <Foundation/Foundation.h>
 #import <CoreLocation/CoreLocation.h>
 #import "ViewController.h"

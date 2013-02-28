@@ -22,10 +22,13 @@
     NSString *photoLongitude;
     NSString *photoName;        //This is to pass to the second viewController
 
+    
+    Annotation *myAnnotation;
+
     __weak IBOutlet UITextField *searchTextField;
     __weak IBOutlet UITableView *photoTableView;
     __weak IBOutlet UIActivityIndicatorView *activityWheel;
-        
+    __weak IBOutlet MKMapView *currentLocationMap;
 }
 
 - (IBAction)searchButton:(id)sender;
@@ -45,6 +48,33 @@
     [super viewDidLoad];
     
     [self startLocationUpdates];
+    
+    CLLocationCoordinate2D mmCoordinate =
+    {
+        //.latitude = 37.78
+        //.longitude = -122.40
+        
+        .latitude = 41.894032f,
+        .longitude = -87.634742f
+    };
+    
+    //mmCoordinate.latitude = 41.894032f;
+    //mmCoordinate.longitude = -87.634742f;
+    
+    
+    MKCoordinateSpan defaultSpan =
+    {
+        .latitudeDelta = 0.002f,
+        .longitudeDelta = 0.002f
+    };
+    
+    MKCoordinateRegion myRegion = {mmCoordinate, defaultSpan};
+    
+    
+    
+    
+    
+     [currentLocationMap setRegion:myRegion];
 
 }
 
@@ -239,7 +269,7 @@
     
     //or turn it on with this to save battery:
     //will update when it sees we've moved some amount...
-    //[missLocationManager startMonitoringSignificantLocationChanges];
+    //[missLocationManager startUpdatingLocation];
     
     //this one is accurate enough, and not so battery draining
     missLocationManager.desiredAccuracy = kCLLocationAccuracyBest;
@@ -259,10 +289,10 @@
     //NSLog(@"%@", [newLocation description]);
     
     //this places the pin
-    //[self updatePersonalCoordinates:newLocation.coordinate];
+    [self updatePersonalCoordinates:newLocation.coordinate];
     
     //this places the map view center
-    //[self UpdateMapViewWithNewCenter:newLocation.coordinate];
+    [self UpdateMapViewWithNewCenter:newLocation.coordinate];
     
     NSString *latAsString = [NSString stringWithFormat:@"%f", newLocation.coordinate.latitude];
     NSString *lonAsString = [NSString stringWithFormat:@"%f", newLocation.coordinate.longitude];
@@ -271,6 +301,65 @@
     self.searchLonString = lonAsString;
     
 }
+
+
+
+//THIS IS THE STUFF ADDED IMPERFECTLY THURS, 2/28..............
+
+- (void)UpdateMapViewWithNewCenter: (CLLocationCoordinate2D)newCoordinate
+{
+    
+    
+    
+    
+    //    MKCoordinateSpan defaultSpan =
+    //    {
+    //        .latitudeDelta = 0.002f,
+    //        .longitudeDelta = 0.002f
+    //    };
+    
+    //MKCoordinateRegion newRegion = {newCoordinate, defaultSpan};
+    
+    MKCoordinateRegion newRegion = {newCoordinate, currentLocationMap.region.span};
+    
+    
+    
+    [currentLocationMap setRegion:newRegion];
+    
+    
+}
+
+
+-(void)updatePersonalCoordinates: (CLLocationCoordinate2D)newCoordinate
+{
+    myAnnotation.coordinate = newCoordinate;
+}
+
+
+
+-(MKAnnotationView*)mapView:(MKMapView*)mapView viewForAnnotation:(id<MKAnnotation>)annotation
+{
+    UIButton *detailButton = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+    MKAnnotationView *annotationView = [mapView dequeueReusableAnnotationViewWithIdentifier:@"myAnnotation"];
+    
+    if (annotationView == nil) {
+        annotationView = [[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"myAnnotation"];
+    }
+    
+    [detailButton addTarget:self
+                     action:@selector(showDetail)
+           forControlEvents:UIControlEventTouchUpInside];
+    //pinView.pinColor = MKAnnotationColorPurple;
+    annotationView.canShowCallout = YES;
+    annotationView.image = [UIImage imageNamed:@"mobile-makers-logo.png"];
+    annotationView.rightCalloutAccessoryView = detailButton;
+    
+    return annotationView;
+}
+
+
+
+//END ADDITIONS THURS 2/28.....................
 
 
 
