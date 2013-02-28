@@ -11,7 +11,7 @@
 
 @implementation MMControllerDelegate
 
-@synthesize mrLocationManager;
+@synthesize mrLocationManager, delegate;
 
 -(id)init
 {

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12C60" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="2">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12C3012" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="2">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
     </dependencies>
@@ -99,14 +99,15 @@
                         <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="FKO-sO-mYT"/>
-                            <imageView userInteractionEnabled="NO" alpha="0.29999999999999999" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H6W-sJ-3e4">
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="FKO-sO-mYT">
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="185" id="fBL-sU-LhK"/>
+                                    <constraint firstAttribute="height" constant="185" id="3Ac-fe-l2F"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Photo Title will go here" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="228" translatesAutoresizingMaskIntoConstraints="NO" id="0rc-XT-JOf">
+                            <imageView userInteractionEnabled="NO" alpha="0.29999999999999999" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H6W-sJ-3e4">
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            </imageView>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="228" translatesAutoresizingMaskIntoConstraints="NO" id="0rc-XT-JOf">
                                 <constraints>
                                     <constraint firstAttribute="height" constant="26" id="4j6-NQ-axK"/>
                                     <constraint firstAttribute="width" constant="228" id="fhk-eH-p6M"/>
@@ -140,28 +141,36 @@
                                     <outlet property="delegate" destination="PRM-sv-zoo" id="ylB-Su-HY3"/>
                                 </connections>
                             </mapView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="Default.png" translatesAutoresizingMaskIntoConstraints="NO" id="8ix-hU-GXq">
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="lbR-Pu-xZf" firstAttribute="trailing" secondItem="HW6-WA-TiH" secondAttribute="trailing" type="default" id="7ce-8p-Ryl"/>
+                            <constraint firstItem="8ix-hU-GXq" firstAttribute="leading" secondItem="HW6-WA-TiH" secondAttribute="leading" type="default" id="B3U-et-fR7"/>
                             <constraint firstItem="FKO-sO-mYT" firstAttribute="bottom" secondItem="HW6-WA-TiH" secondAttribute="bottom" type="default" id="ICo-Ab-S3q"/>
+                            <constraint firstItem="0rc-XT-JOf" firstAttribute="leading" secondItem="HW6-WA-TiH" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="L9a-H5-Jny"/>
                             <constraint firstItem="H6W-sJ-3e4" firstAttribute="top" secondItem="FKO-sO-mYT" secondAttribute="top" type="default" id="Lqy-TV-BlI"/>
                             <constraint firstAttribute="trailing" secondItem="9ed-mJ-F2M" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="N9H-jx-0S9"/>
-                            <constraint firstItem="0rc-XT-JOf" firstAttribute="leading" secondItem="HW6-WA-TiH" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="Rjw-vB-ShT"/>
+                            <constraint firstItem="8ix-hU-GXq" firstAttribute="top" secondItem="HW6-WA-TiH" secondAttribute="top" type="default" id="QwI-sf-zpV"/>
                             <constraint firstItem="FKO-sO-mYT" firstAttribute="leading" secondItem="HW6-WA-TiH" secondAttribute="leading" type="default" id="Tty-Wa-ZhA"/>
                             <constraint firstItem="H6W-sJ-3e4" firstAttribute="leading" secondItem="HW6-WA-TiH" secondAttribute="leading" type="default" id="Xtk-OM-yfZ"/>
                             <constraint firstItem="H6W-sJ-3e4" firstAttribute="trailing" secondItem="HW6-WA-TiH" secondAttribute="trailing" type="default" id="dgC-eS-6kb"/>
-                            <constraint firstAttribute="bottom" secondItem="0rc-XT-JOf" secondAttribute="bottom" constant="154" id="jU2-dl-xxr"/>
                             <constraint firstItem="lbR-Pu-xZf" firstAttribute="leading" secondItem="HW6-WA-TiH" secondAttribute="leading" type="default" id="ojk-xu-R3j"/>
                             <constraint firstAttribute="bottom" secondItem="9ed-mJ-F2M" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="pI8-k1-XEw"/>
+                            <constraint firstItem="8ix-hU-GXq" firstAttribute="bottom" secondItem="lbR-Pu-xZf" secondAttribute="bottom" type="default" id="rtk-D7-rha"/>
                             <constraint firstItem="lbR-Pu-xZf" firstAttribute="top" secondItem="HW6-WA-TiH" secondAttribute="top" type="default" id="sFU-na-Ihg"/>
                             <constraint firstItem="H6W-sJ-3e4" firstAttribute="bottom" secondItem="HW6-WA-TiH" secondAttribute="bottom" type="default" id="tOV-lU-Hn1"/>
+                            <constraint firstAttribute="bottom" secondItem="0rc-XT-JOf" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="uTh-mL-OKL"/>
+                            <constraint firstItem="0rc-XT-JOf" firstAttribute="baseline" secondItem="9ed-mJ-F2M" secondAttribute="baseline" type="default" id="vhY-yV-rah"/>
                             <constraint firstItem="FKO-sO-mYT" firstAttribute="trailing" secondItem="HW6-WA-TiH" secondAttribute="trailing" type="default" id="xPO-aL-dq5"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="detailImageUIImage" destination="FKO-sO-mYT" id="MA9-TX-fqR"/>
                         <outlet property="detailMapView" destination="lbR-Pu-xZf" id="Ffv-J9-6qz"/>
+                        <outlet property="mapBlackImageCover" destination="8ix-hU-GXq" id="TTR-e7-VJz"/>
                         <outlet property="photoTitleLabel" destination="0rc-XT-JOf" id="akx-Hw-srl"/>
                     </connections>
                 </viewController>
@@ -171,32 +180,9 @@
             <point key="canvasLocation" x="454" y="-34"/>
         </scene>
     </scenes>
-    <classes>
-        <class className="NSLayoutConstraint" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
-        </class>
-        <class className="UIStoryboardSegue" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/UIStoryboardSegue.h"/>
-        </class>
-        <class className="ViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="searchButton:"/>
-                <relationship kind="action" name="unwindToSearchTableView:" candidateClass="UIStoryboardSegue"/>
-                <relationship kind="outlet" name="activityWheel" candidateClass="UIActivityIndicatorView"/>
-                <relationship kind="outlet" name="photoTableView" candidateClass="UITableView"/>
-                <relationship kind="outlet" name="searchTextField" candidateClass="UITextField"/>
-            </relationships>
-        </class>
-        <class className="photoDetailViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/photoDetailViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="detailImageUIImage" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="detailMapView" candidateClass="MKMapView"/>
-                <relationship kind="outlet" name="photoTitleLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-    </classes>
+    <resources>
+        <image name="Default.png" width="320" height="480"/>
+    </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

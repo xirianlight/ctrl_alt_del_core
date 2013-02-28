@@ -17,6 +17,7 @@
     //__weak IBOutlet MKMapView *myMapView;
 
     __weak IBOutlet UILabel *photoTitleLabel;
+    __weak IBOutlet UIImageView *mapBlackImageCover;
 }
 
 @end
@@ -58,6 +59,11 @@ http://api.flickr.com/services/rest/?method=flickr.photos.geo.getLocation&api_ke
         //This doesn't work yet, but will eventually take the
         //name of the picture from the selected row & display it
     photoTitleLabel.text = self.photoNameForLabel;
+    
+    [UIView beginAnimations:nil context:nil];
+    [UIView setAnimationDuration:0.5];
+    mapBlackImageCover.alpha = 0;
+    [UIView commitAnimations];
     
     
     
@@ -104,12 +110,9 @@ http://api.flickr.com/services/rest/?method=flickr.photos.geo.getLocation&api_ke
     
     //instantiating the pin  with the Annotation object file
      Annotation *myAnnotation = [[Annotation alloc] init];
-    //myAnnotation.title = @"MobileMakers";
+    myAnnotation.title = [NSString stringWithFormat:@"%@", photoTitleLabel.text];
     //myAnnotation.subtitle = @"and Don's nose";
     myAnnotation.coordinate = mmCoordinate;
-    
-    
-    
     
     //draws the map
     [detailMapView setRegion:myRegion];
@@ -118,14 +121,42 @@ http://api.flickr.com/services/rest/?method=flickr.photos.geo.getLocation&api_ke
     [detailMapView addAnnotation:myAnnotation];
     
     
-    
-    
-    
-    
-    
     //..........end of Trying to set the map to the photo lat and lon................
     
 }
+    //Bonus annotation customization code
+
+//
+// Turn this back on and give it an image resource to show on the map view
+//
+//-(MKAnnotationView*)mapView:(MKMapView*)mapView viewForAnnotation:(id<MKAnnotation>)annotation
+//{
+//    UIButton *detailButton = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+//    MKAnnotationView *annotationView = [mapView dequeueReusableAnnotationViewWithIdentifier:@"myAnnotation"];
+//    
+//    if (annotationView == nil) {
+//        annotationView = [[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"myAnnotation"];
+//    }
+//    
+//    [detailButton addTarget:self
+//                     action:@selector(showDetail)
+//           forControlEvents:UIControlEventTouchUpInside];
+//    //pinView.pinColor = MKAnnotationColorPurple;
+//    annotationView.canShowCallout = YES;
+//    annotationView.image = [UIImage imageNamed:@"mobile-makers-logo.png"];
+//    annotationView.rightCalloutAccessoryView = detailButton;
+//    
+//    return annotationView;
+//}
+//
+//
+//    //Detail Disclosure button behavior
+//-(void)showDetail
+//{
+//    NSLog(@"Detail disclosure button pressed");
+//}
+
+
 
 //...........................................................................
 //We must implement these two methods to be a corlactionManagerDelegate
