@@ -131,6 +131,7 @@
         UITableViewCell *myCell = (UITableViewCell*)sender;
         imageToTransfer =  myCell.imageView.image;
         
+        
         photoDetailViewController *phvc = [segue destinationViewController];
         phvc.photoIdForDetailVC = idStringToPass;
         phvc.photoLongitudeForDetailVC = photoLongitude;
