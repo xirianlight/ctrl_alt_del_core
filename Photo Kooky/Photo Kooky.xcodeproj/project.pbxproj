@@ -109,9 +109,9 @@
 				6B59BCE416D5A54E003FC5D7 /* ViewController.m */,
 				6B2545F316DD527900D61576 /* Annotation.h */,
 				6B2545F416DD527900D61576 /* Annotation.m */,
-				6B59BCCF16D5A54E003FC5D7 /* Supporting Files */,
 				6BC5801F16DDBAE600CE65E8 /* MMControllerDelegate.h */,
 				6BC5802016DDBAE600CE65E8 /* MMControllerDelegate.m */,
+				6B59BCCF16D5A54E003FC5D7 /* Supporting Files */,
 			);
 			path = "Photo Kooky";
 			sourceTree = "<group>";

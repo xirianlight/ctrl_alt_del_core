@@ -21,7 +21,7 @@
     NSString *photoLatitude;
     NSString *photoLongitude;
     NSString *photoName;        //This is to pass to the second viewController
-    
+
     __weak IBOutlet UITextField *searchTextField;
     __weak IBOutlet UITableView *photoTableView;
     __weak IBOutlet UIActivityIndicatorView *activityWheel;
@@ -35,10 +35,16 @@
 
 @implementation ViewController
 
+@synthesize currentLocation;
+@synthesize searchLonString;
+@synthesize searchLatString;
+
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    [self startLocationUpdates];
 
 }
 
@@ -59,10 +65,11 @@
 
     // NUMBER OF CELLS
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{    
-        //setting up my reusable cell
-    UITableViewCell *myCustomCell =[tableView dequeueReusableCellWithIdentifier:@"photoCellReuseID"];
+{
     
+    
+        //setting up my reusable cell
+    UITableViewCell *myCustomCell =[tableView dequeueReusableCellWithIdentifier:@"photoCellReuseID"];    
         //collecting all the data from photosDictionary
     NSDictionary *dictionaryForSinglePhoto = [arrayForPhotosArray objectAtIndex:indexPath.row];
     NSString *farmString = [dictionaryForSinglePhoto valueForKey:@"farm"];
@@ -72,19 +79,14 @@
     idStringToPass = idString;
     NSString *secretString = [dictionaryForSinglePhoto valueForKey:@"secret"];
     NSString *titleString  = [dictionaryForSinglePhoto valueForKey:@"title"];    
-    
         //New code to include photo Longitude and Latitude as outputs.
     photoLatitude = [dictionaryForSinglePhoto valueForKey:@"latitude"];
     photoLongitude = [dictionaryForSinglePhoto valueForKey:@"longitude"];
-    
-        //Logs out the titles of photos as they load. Nice
+            //Logs out the titles of photos as they load. Nice
     NSLog(@"%@", titleString);
-    
         //making that info into a request for a photo
-    
     NSString *photoURLString = [NSString stringWithFormat:@"http://farm%@.staticflickr.com/%@/%@_%@_m.jpg", farmString, serverString, idString, secretString];
     NSURL *photoURL = [NSURL URLWithString:photoURLString];    
-    
         //making the request online for the photo
     NSData *photoData = [NSData dataWithContentsOfURL:photoURL];
     UIImage *photoImage = [UIImage imageWithData:photoData];
@@ -94,12 +96,11 @@
     myCustomCell.imageView.hidden = YES;
     myCustomCell.textLabel.text = titleString;
     myCustomCell.textLabel.hidden = YES;
-    
         //Find label/pics with tags and populate
     UIView *pictureViewToImage = [myCustomCell viewWithTag:50];
     UIImageView *picture2display = (UIImageView *) pictureViewToImage;
     picture2display.image = photoImage;
-    
+        //render the cell
     UIView *textLabel1 = [myCustomCell viewWithTag:51];
     UILabel *textLabel = (UILabel *) textLabel1;
     textLabel.font = [UIFont fontWithName:@"TrebuchetMS-Bold" size:16];
@@ -131,7 +132,6 @@
         UITableViewCell *myCell = (UITableViewCell*)sender;
         imageToTransfer =  myCell.imageView.image;
         
-        
         photoDetailViewController *phvc = [segue destinationViewController];
         phvc.photoIdForDetailVC = idStringToPass;
         phvc.photoLongitudeForDetailVC = photoLongitude;
@@ -140,8 +140,6 @@
         
         NSLog(@"the latitude is %@", photoLatitude);
         NSLog(@"the longitude is %@", photoLongitude);
-        
-    
     }
 }
 
@@ -153,21 +151,19 @@
         //Set search text field as search query text.
     searchText = searchTextField.text;
         //Request pictures matching search query
-        //Please note that lat/lon/radius are hard-coded for now
+ 
+    //old search string without lat and lon
+//    NSString *flickrURLString =[NSString stringWithFormat:@"http://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=b4a287d18b3f7398ffb4ab9f1b961e22&lat=41.894032&lon=-87.634742&radius=3&extras=geo&accuracy=14&tags=%@&format=json&nojsoncallback=1", searchText];
     
     
-    NSString *flickrURLString =[NSString stringWithFormat:@"http://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=b4a287d18b3f7398ffb4ab9f1b961e22&lat=41.894032&lon=-87.634742&radius=3&extras=geo&accuracy=14&tags=%@&format=json&nojsoncallback=1", searchText];
+    //preparing search URL to take current location - need to create searchLatString and searchLonString variables.......
+    //add newLocation.coordinate.latitude, newLocation.coordinate.longitude
     
-    /*
-    //preparing search URL to take current location - need to create searchLatString and searchLonString variables...........
-     
-     PART OF WHAT TO DO NEXT!
-     
-        NSString *flickrURLString =[NSString stringWithFormat:@"http://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=b4a287d18b3f7398ffb4ab9f1b961e22&lat=%@&lon=%@&radius=3&extras=geo&accuracy=14&tags=%@&format=json&nojsoncallback=1",searchLatString, searchLonString, searchText];
-    */
+    NSLog(@"searchlon = %@ searchlat = %@", searchLonString, searchLatString);
     
+    NSString *flickrURLString =[NSString stringWithFormat:@"http://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=b4a287d18b3f7398ffb4ab9f1b961e22&lat=%@&lon=%@&radius=3&extras=geo&accuracy=14&tags=%@&format=json&nojsoncallback=1",searchLatString, searchLonString, searchText];
     
-        //Code to go from URL string to JSON request
+    //Code to go from URL string to JSON request
     NSURL *flickrURL = [NSURL URLWithString:flickrURLString];
     NSMutableURLRequest *flickrURLRequest = [NSMutableURLRequest requestWithURL:flickrURL];
     flickrURLRequest.HTTPMethod = @"GET";
@@ -199,6 +195,62 @@
          }
      }];
 }
+
+
+//this is the "necessary code" for running the MMControllerDelegate, pasted over from MapView.xcodeproj
+
+- (void)startLocationUpdates
+{
+    if (missLocationManager == nil)
+    {
+        missLocationManager =[[CLLocationManager alloc]init];
+        
+    }
+    
+    missLocationManager.delegate = self;
+    
+    //turn on the data
+    [missLocationManager startUpdatingLocation];
+    
+    //or turn it on with this to save battery:
+    //will update when it sees we've moved some amount...
+    //[missLocationManager startMonitoringSignificantLocationChanges];
+    
+    //this one is accurate enough, and not so battery draining
+    missLocationManager.desiredAccuracy = kCLLocationAccuracyBest;
+}
+
+
+//part of CLLocationDelegate necessary code
+//method for GPS updated, gets called to update new location
+//
+- (void)locationManager:(CLLocationManager *)manager
+	didUpdateToLocation:(CLLocation *)newLocation
+		   fromLocation:(CLLocation *)oldLocation
+{
+    //NSLog(@"%@", [newLocation description]);
+    
+    NSLog(@"lat:%f - lon:%f", newLocation.coordinate.latitude, newLocation.coordinate.longitude);
+    //NSLog(@"%@", [newLocation description]);
+    
+    //this places the pin
+    //[self updatePersonalCoordinates:newLocation.coordinate];
+    
+    //this places the map view center
+    //[self UpdateMapViewWithNewCenter:newLocation.coordinate];
+    
+    NSString *latAsString = [NSString stringWithFormat:@"%f", newLocation.coordinate.latitude];
+    NSString *lonAsString = [NSString stringWithFormat:@"%f", newLocation.coordinate.longitude];
+    
+    self.searchLatString = latAsString;
+    self.searchLonString = lonAsString;
+    
+}
+
+
+
+
+
 
 - (void)didReceiveMemoryWarning
 {
