@@ -23,7 +23,6 @@
 		6B59BCED16D6BB94003FC5D7 /* photoDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B59BCEC16D6BB94003FC5D7 /* photoDetailViewController.m */; };
 		6BC5802116DDBAE600CE65E8 /* MMControllerDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BC5802016DDBAE600CE65E8 /* MMControllerDelegate.m */; };
 		6BC5802316DDC17200CE65E8 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BC5802216DDC17200CE65E8 /* CoreLocation.framework */; };
-		8304DF2616E0112B00996C70 /* burger.png in Resources */ = {isa = PBXBuildFile; fileRef = 8304DF2516E0112B00996C70 /* burger.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,7 +50,6 @@
 		6BC5801F16DDBAE600CE65E8 /* MMControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMControllerDelegate.h; sourceTree = "<group>"; };
 		6BC5802016DDBAE600CE65E8 /* MMControllerDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMControllerDelegate.m; sourceTree = "<group>"; };
 		6BC5802216DDC17200CE65E8 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
-		8304DF2516E0112B00996C70 /* burger.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = burger.png; path = "../../../reflectionMatsuda/MobileMakers/Class Exercizes/MapView 2/MapView/burger.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,7 +100,6 @@
 		6B59BCCE16D5A54E003FC5D7 /* Photo Kooky */ = {
 			isa = PBXGroup;
 			children = (
-				8304DF2516E0112B00996C70 /* burger.png */,
 				6B59BCD716D5A54E003FC5D7 /* AppDelegate.h */,
 				6B59BCD816D5A54E003FC5D7 /* AppDelegate.m */,
 				6B59BCE016D5A54E003FC5D7 /* MainStoryboard.storyboard */,
@@ -189,7 +186,6 @@
 				6B59BCDD16D5A54E003FC5D7 /* Default@2x.png in Resources */,
 				6B59BCDF16D5A54E003FC5D7 /* Default-568h@2x.png in Resources */,
 				6B59BCE216D5A54E003FC5D7 /* MainStoryboard.storyboard in Resources */,
-				8304DF2616E0112B00996C70 /* burger.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

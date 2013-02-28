@@ -144,8 +144,7 @@
     UIView *textLabel1 = [myCustomCell viewWithTag:51];
     UILabel *textLabel = (UILabel *) textLabel1;
     textLabel.font = [UIFont fontWithName:@"TrebuchetMS-Bold" size:16];
-    textLabel.text = [dictionaryForSinglePhoto valueForKey:@"title"];
-        //Start annotation code here
+    textLabel.text = [dictionaryForSinglePhoto valueForKey:@"title"];        //Start annotation code here
         Annotation *newAnnotation;
         newAnnotation = [[Annotation alloc]init];
         newAnnotation.title = titleString;
@@ -161,9 +160,7 @@
         
         [currentLocationMap addAnnotation:newAnnotation];
 
-        
->>>>>>> 714193de58614cd9bfceed80d74a046580e8e209
-    return myCustomCell;
+        return myCustomCell;
     
     }
     
@@ -364,11 +361,10 @@
 //           forControlEvents:UIControlEventTouchUpInside];
 //    //pinView.pinColor = MKAnnotationColorPurple;
 //    annotationView.canShowCallout = YES;
-<<<<<<< HEAD
+
 //    annotationView.image = [UIImage imageNamed:@"mobile-makers-logo.png"];
-=======
+
 //    annotationView.image = [UIImage imageNamed:@"burger.png"];
->>>>>>> 714193de58614cd9bfceed80d74a046580e8e209
 //    annotationView.rightCalloutAccessoryView = detailButton;
 //    
 //    return annotationView;
