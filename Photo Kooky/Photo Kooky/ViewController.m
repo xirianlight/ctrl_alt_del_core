@@ -145,6 +145,16 @@
     UILabel *textLabel = (UILabel *) textLabel1;
     textLabel.font = [UIFont fontWithName:@"TrebuchetMS-Bold" size:16];
     textLabel.text = [dictionaryForSinglePhoto valueForKey:@"title"];
+    //....................ADD ALL PINS HERE...................
+    
+        Annotation *newAnnotation;
+        newAnnotation.title = titleString;
+        CLLocationCoordinate2D newCoordinate =
+        
+        
+        
+        
+    //....................................................
     return myCustomCell;
     
     }
@@ -337,25 +347,25 @@
 
 
 
--(MKAnnotationView*)mapView:(MKMapView*)mapView viewForAnnotation:(id<MKAnnotation>)annotation
-{
-    UIButton *detailButton = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
-    MKAnnotationView *annotationView = [mapView dequeueReusableAnnotationViewWithIdentifier:@"myAnnotation"];
-    
-    if (annotationView == nil) {
-        annotationView = [[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"myAnnotation"];
-    }
-    
-    [detailButton addTarget:self
-                     action:@selector(showDetail)
-           forControlEvents:UIControlEventTouchUpInside];
-    //pinView.pinColor = MKAnnotationColorPurple;
-    annotationView.canShowCallout = YES;
-    annotationView.image = [UIImage imageNamed:@"mobile-makers-logo.png"];
-    annotationView.rightCalloutAccessoryView = detailButton;
-    
-    return annotationView;
-}
+//-(MKAnnotationView*)mapView:(MKMapView*)mapView viewForAnnotation:(id<MKAnnotation>)annotation
+//{
+//    UIButton *detailButton = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+//    MKAnnotationView *annotationView = [mapView dequeueReusableAnnotationViewWithIdentifier:@"myAnnotation"];
+//    
+//    if (annotationView == nil) {
+//        annotationView = [[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"myAnnotation"];
+//    }
+//    
+//    [detailButton addTarget:self
+//                     action:@selector(showDetail)
+//           forControlEvents:UIControlEventTouchUpInside];
+//    //pinView.pinColor = MKAnnotationColorPurple;
+//    annotationView.canShowCallout = YES;
+//    annotationView.image = [UIImage imageNamed:@"mobile-makers-logo.png"];
+//    annotationView.rightCalloutAccessoryView = detailButton;
+//    
+//    return annotationView;
+//}
 
 
 
