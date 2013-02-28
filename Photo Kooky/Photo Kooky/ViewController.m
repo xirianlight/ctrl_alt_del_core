@@ -235,7 +235,7 @@
     missLocationManager.delegate = self;
     
     //turn on the data
-    [missLocationManager startUpdatingLocation];
+    [missLocationManager startMonitoringSignificantLocationChanges];
     
     //or turn it on with this to save battery:
     //will update when it sees we've moved some amount...
