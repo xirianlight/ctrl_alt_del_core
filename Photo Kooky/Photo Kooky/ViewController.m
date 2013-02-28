@@ -145,6 +145,23 @@
     UILabel *textLabel = (UILabel *) textLabel1;
     textLabel.font = [UIFont fontWithName:@"TrebuchetMS-Bold" size:16];
     textLabel.text = [dictionaryForSinglePhoto valueForKey:@"title"];
+        //Start annotation code here
+        Annotation *newAnnotation;
+        newAnnotation = [[Annotation alloc]init];
+        newAnnotation.title = titleString;
+
+        float photosLatitude = [photoLatitude floatValue];
+        float photosLongitude = [photoLongitude floatValue];
+        CLLocationCoordinate2D newCoordinate =
+        {
+            .latitude = photosLatitude,
+            .longitude = photosLongitude
+        };
+        newAnnotation.coordinate = newCoordinate;
+        
+        [currentLocationMap addAnnotation:newAnnotation];
+
+        
     return myCustomCell;
     
     }
@@ -309,9 +326,6 @@
 - (void)UpdateMapViewWithNewCenter: (CLLocationCoordinate2D)newCoordinate
 {
     
-    
-    
-    
     //    MKCoordinateSpan defaultSpan =
     //    {
     //        .latitudeDelta = 0.002f,
@@ -321,8 +335,6 @@
     //MKCoordinateRegion newRegion = {newCoordinate, defaultSpan};
     
     MKCoordinateRegion newRegion = {newCoordinate, currentLocationMap.region.span};
-    
-    
     
     [currentLocationMap setRegion:newRegion];
     
@@ -337,25 +349,25 @@
 
 
 
--(MKAnnotationView*)mapView:(MKMapView*)mapView viewForAnnotation:(id<MKAnnotation>)annotation
-{
-    UIButton *detailButton = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
-    MKAnnotationView *annotationView = [mapView dequeueReusableAnnotationViewWithIdentifier:@"myAnnotation"];
-    
-    if (annotationView == nil) {
-        annotationView = [[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"myAnnotation"];
-    }
-    
-    [detailButton addTarget:self
-                     action:@selector(showDetail)
-           forControlEvents:UIControlEventTouchUpInside];
-    //pinView.pinColor = MKAnnotationColorPurple;
-    annotationView.canShowCallout = YES;
-    annotationView.image = [UIImage imageNamed:@"mobile-makers-logo.png"];
-    annotationView.rightCalloutAccessoryView = detailButton;
-    
-    return annotationView;
-}
+//-(MKAnnotationView*)mapView:(MKMapView*)mapView viewForAnnotation:(id<MKAnnotation>)annotation
+//{
+//    UIButton *detailButton = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+//    MKAnnotationView *annotationView = [mapView dequeueReusableAnnotationViewWithIdentifier:@"myAnnotation"];
+//    
+//    if (annotationView == nil) {
+//        annotationView = [[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"myAnnotation"];
+//    }
+//    
+//    [detailButton addTarget:self
+//                     action:@selector(showDetail)
+//           forControlEvents:UIControlEventTouchUpInside];
+//    //pinView.pinColor = MKAnnotationColorPurple;
+//    annotationView.canShowCallout = YES;
+//    annotationView.image = [UIImage imageNamed:@"burger.png"];
+//    annotationView.rightCalloutAccessoryView = detailButton;
+//    
+//    return annotationView;
+//}
 
 
 
