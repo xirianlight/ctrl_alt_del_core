@@ -63,6 +63,17 @@
         //setting up my reusable cell
     UITableViewCell *myCustomCell =[tableView dequeueReusableCellWithIdentifier:@"photoCellReuseID"];
     
+    
+    [arrayForPhotosArray count];
+    
+    if ([arrayForPhotosArray count] == 0)
+    {
+        searchTextField.text = @"";
+        return myCustomCell;
+    }
+    else
+    {
+    
         //collecting all the data from photosDictionary
     NSDictionary *dictionaryForSinglePhoto = [arrayForPhotosArray objectAtIndex:indexPath.row];
     NSString *farmString = [dictionaryForSinglePhoto valueForKey:@"farm"];
@@ -104,8 +115,9 @@
     UILabel *textLabel = (UILabel *) textLabel1;
     textLabel.font = [UIFont fontWithName:@"TrebuchetMS-Bold" size:16];
     textLabel.text = [dictionaryForSinglePhoto valueForKey:@"title"];
-    
     return myCustomCell;
+    
+    }
     
 }
 
@@ -130,6 +142,7 @@
     {
         UITableViewCell *myCell = (UITableViewCell*)sender;
         imageToTransfer =  myCell.imageView.image;
+        photoName = myCell.textLabel.text;
         
         
         photoDetailViewController *phvc = [segue destinationViewController];
@@ -137,6 +150,7 @@
         phvc.photoLongitudeForDetailVC = photoLongitude;
         phvc.photoLatitudeForDetailVC = photoLatitude;
         phvc.imageToShow = imageToTransfer;
+        phvc.photoNameForLabel = photoName;
         
         NSLog(@"the latitude is %@", photoLatitude);
         NSLog(@"the longitude is %@", photoLongitude);
@@ -193,6 +207,18 @@
              
              NSLog(@"%@", [photosDictionary valueForKey:@"pages"]);
              
+        
+             if ([arrayForPhotosArray count]==0)
+             {
+                     UIAlertView *noResultsAlert;
+                     noResultsAlert = [[UIAlertView alloc]
+                                       initWithTitle:@"No results"
+                                       message:@"0 results for that search in this area"
+                                       delegate:self
+                                       cancelButtonTitle:@"OK"
+                                      otherButtonTitles: nil];
+                    [noResultsAlert show];
+             }
              [activityWheel stopAnimating];
              [photoTableView reloadData];
              

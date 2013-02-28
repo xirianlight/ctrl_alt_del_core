@@ -6,11 +6,6 @@
 //  Copyright (c) 2013 David Johnston. All rights reserved.
 //
 
-
-
-
-
-
 #import "Annotation.h"
 
 @implementation Annotation
