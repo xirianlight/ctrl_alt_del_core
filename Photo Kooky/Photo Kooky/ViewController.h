@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "MMControllerDelegate.h"
+#import <YelpKit/YelpKit.h>
+
 
 @interface ViewController : UIViewController <UITableViewDelegate, UITableViewDelegate, UITextFieldDelegate, CLLocationManagerDelegate>
 {

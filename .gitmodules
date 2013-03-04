@@ -1,0 +1,6 @@
+[submodule "YelpKit"]
+	path = YelpKit
+	url = git://github.com/Yelp/YelpKit.git
+[submodule "YelpKit2"]
+	path = YelpKit2
+	url = git://github.com/Yelp/YelpKit.git
