@@ -25,6 +25,7 @@
 		6BA27C6F16E513710007386F /* libYelpKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BA27C6A16E512F00007386F /* libYelpKit.a */; };
 		6BC5802116DDBAE600CE65E8 /* MMControllerDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BC5802016DDBAE600CE65E8 /* MMControllerDelegate.m */; };
 		6BC5802316DDC17200CE65E8 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BC5802216DDC17200CE65E8 /* CoreLocation.framework */; };
+		6BFFBBBA16E553970034AFA1 /* MMYelpMapVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BFFBBB916E553970034AFA1 /* MMYelpMapVC.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,6 +79,8 @@
 		6BC5801F16DDBAE600CE65E8 /* MMControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMControllerDelegate.h; sourceTree = "<group>"; };
 		6BC5802016DDBAE600CE65E8 /* MMControllerDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMControllerDelegate.m; sourceTree = "<group>"; };
 		6BC5802216DDC17200CE65E8 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		6BFFBBB816E553970034AFA1 /* MMYelpMapVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMYelpMapVC.h; sourceTree = "<group>"; };
+		6BFFBBB916E553970034AFA1 /* MMYelpMapVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMYelpMapVC.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -144,6 +147,8 @@
 				6BC5801F16DDBAE600CE65E8 /* MMControllerDelegate.h */,
 				6BC5802016DDBAE600CE65E8 /* MMControllerDelegate.m */,
 				6B59BCCF16D5A54E003FC5D7 /* Supporting Files */,
+				6BFFBBB816E553970034AFA1 /* MMYelpMapVC.h */,
+				6BFFBBB916E553970034AFA1 /* MMYelpMapVC.m */,
 			);
 			path = "Photo Kooky";
 			sourceTree = "<group>";
@@ -267,6 +272,7 @@
 				6B59BCED16D6BB94003FC5D7 /* photoDetailViewController.m in Sources */,
 				6B2545F516DD527900D61576 /* Annotation.m in Sources */,
 				6BC5802116DDBAE600CE65E8 /* MMControllerDelegate.m in Sources */,
+				6BFFBBBA16E553970034AFA1 /* MMYelpMapVC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
