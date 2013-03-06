@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
 #import <YelpKit/YelpKit.h>
+#import "Annotation.h"
 
 @interface MMYelpMapVC : UIViewController <UITableViewDelegate, UITableViewDelegate, UITextFieldDelegate, CLLocationManagerDelegate>
 

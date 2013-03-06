@@ -72,6 +72,8 @@
     Annotation *myCurrentLocation = [[Annotation alloc] init];
     myCurrentLocation.title = @"You are here.";
     myCurrentLocation.coordinate = mmCoordinate;     
+    
+    
     [currentLocationMap addAnnotation:myCurrentLocation];
     
 

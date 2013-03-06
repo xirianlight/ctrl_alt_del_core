@@ -13,7 +13,7 @@
 {
     
     __weak IBOutlet MKMapView *yelpMap;
-    NSMutableDictionary *photosDictionary;
+    NSMutableDictionary *yelpSearchResultsDictionary;
     NSMutableDictionary *singlePhotoDictionary;
     NSArray *arrayForPhotosArray;
     NSString *searchText;
@@ -63,7 +63,7 @@
     NSLog(@"searchlon = %@ searchlat = %@", searchLonString, searchLatString);
     
     
-    NSString *flickrURLString =[NSString stringWithFormat:@"http://api.yelp.com/business_review_search?term=yelp&lat=37.788022&long=-122.399797&radius=10&limit=5&ywsid=ylWkpXJFz6-ZI3PvDG519A"];
+    NSString *flickrURLString =[NSString stringWithFormat:@"http://api.yelp.com/business_review_search?term=restaurant&lat=41.894032&long=-87.634742&radius=10&limit=5&ywsid=ylWkpXJFz6-ZI3PvDG519A"];
     
     //COME BACK TO THIS ONE!!!!! 3/4/13
     //NSString *flickrURLString =[NSString stringWithFormat:@"http://api.yelp.com/business_review_search?term=%@&lat=%@&long=%@&radius=10&limit=5&ywsid=ylWkpXJFz6-ZI3PvDG519A", searchText, searchLatString, searchLonString];
@@ -99,37 +99,73 @@
                                              options:NSJSONReadingAllowFragments
                                                error:&jsonError];
              //Extract usable search results from raw JSON data
-             photosDictionary = (NSMutableDictionary *) genericObjectWeKnowIsDictionary;
+             yelpSearchResultsDictionary = (NSMutableDictionary *) genericObjectWeKnowIsDictionary;
             
+             NSLog(@"%@", [yelpSearchResultsDictionary description]);
              
-             
-             
-             
+
              // NSMutableDictionary *secondDictionary = [photosDictionary valueForKey:@"photos"];
             // arrayForPhotosArray = [secondDictionary valueForKey:@"photo"];
              
-             NSLog(@"%@", [photosDictionary valueForKey:@"pages"]);
+
              
              
-             if ([arrayForPhotosArray count]==0)
-             {
-                 UIAlertView *noResultsAlert;
-                 noResultsAlert = [[UIAlertView alloc]
-                                   initWithTitle:@"No results"
-                                   message:@"0 results for that search in this area"
-                                   delegate:self
-                                   cancelButtonTitle:@"OK"
-                                   otherButtonTitles: nil];
-                 [noResultsAlert show];
+//             if ([arrayForPhotosArray count]==0)
+//             {
+//                 UIAlertView *noResultsAlert;
+//                 noResultsAlert = [[UIAlertView alloc]
+//                                   initWithTitle:@"No results"
+//                                   message:@"0 results for that search in this area"
+//                                   delegate:self
+//                                   cancelButtonTitle:@"OK"
+//                                   otherButtonTitles: nil];
+//                 [noResultsAlert show];
+//             }
+
+               // NSArray *businessesArray = [[NSArray alloc] initWithObjects:[yelpSearchResultsDictionary objectForKey:@"businesses"], nil];
+             
+             NSMutableArray *businessesArray = [[NSMutableArray alloc]init];
+             
+             //The following line does not work: passes the object in without unpackint it as an array.  Used arrayWithArray instead.
+             //businessesArray = [NSMutableArray arrayWithObject:[yelpSearchResultsDictionary objectForKey:@"businesses"]];
+             
+             businessesArray = [NSMutableArray arrayWithArray:[yelpSearchResultsDictionary objectForKey:@"businesses"]];
+             
+             
+             //NSLog(@"%@, %@", [businessesArray objectAtIndex:0], [businessesArray objectAtIndex:1]);
+             
+                int numberOfBusiness = businessesArray.count;
+             NSLog(@" number of buisniesses %d", numberOfBusiness);
+             
+             
+                for (int i = 0; i < numberOfBusiness; i++)
+                {
+                    NSDictionary *businessDictionary = [NSDictionary dictionaryWithDictionary:[businessesArray objectAtIndex:i]];
+                    
+                    NSString *businessLatitudeString = [businessDictionary valueForKey:@"latitude"];
+                    NSString *businessLongitudeString = [businessDictionary valueForKey:@"longitude"];
+                    
+                    float businessLatitude = [businessLatitudeString floatValue];
+                    float businessLongitude = [businessLongitudeString floatValue];
+                    
+                    
+                    
+                    NSLog(@"lat %f lon %f", businessLatitude, businessLongitude);
+                    
+                    
+                    
+                    
+                 }
+                
              }
              //[activityWheel stopAnimating];
              //[photoTableView reloadData];
-             
-             
-             
-         }
+//
      }];
-}
+
+             
+
+
 
 
 
@@ -146,7 +182,7 @@
 
 
 
-
+}
 
 
 

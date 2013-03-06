@@ -130,7 +130,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="182-Ez-itc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-69" y="-549"/>
+            <point key="canvasLocation" x="-61" y="-565"/>
         </scene>
         <!--Photo Detail View Controller-->
         <scene sceneID="RK1-Kv-E4U">
@@ -224,41 +224,6 @@
     <resources>
         <image name="Default.png" width="320" height="480"/>
     </resources>
-    <classes>
-        <class className="MMYelpMapVC" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MMYelpMapVC.h"/>
-            <relationships>
-                <relationship kind="action" name="unwindToSearchTableView:" candidateClass="UIStoryboardSegue"/>
-                <relationship kind="outlet" name="yelpMap" candidateClass="MKMapView"/>
-            </relationships>
-        </class>
-        <class className="NSLayoutConstraint" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
-        </class>
-        <class className="UIStoryboardSegue" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/UIStoryboardSegue.h"/>
-        </class>
-        <class className="ViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="searchButton:"/>
-                <relationship kind="action" name="unwindToSearchTableView:" candidateClass="UIStoryboardSegue"/>
-                <relationship kind="outlet" name="activityWheel" candidateClass="UIActivityIndicatorView"/>
-                <relationship kind="outlet" name="currentLocationMap" candidateClass="MKMapView"/>
-                <relationship kind="outlet" name="photoTableView" candidateClass="UITableView"/>
-                <relationship kind="outlet" name="searchTextField" candidateClass="UITextField"/>
-            </relationships>
-        </class>
-        <class className="photoDetailViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/photoDetailViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="detailImageUIImage" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="detailMapView" candidateClass="MKMapView"/>
-                <relationship kind="outlet" name="mapBlackImageCover" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="photoTitleLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
