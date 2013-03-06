@@ -144,6 +144,19 @@
                     
                     NSString *businessLatitudeString = [businessDictionary valueForKey:@"latitude"];
                     NSString *businessLongitudeString = [businessDictionary valueForKey:@"longitude"];
+                    NSString *businessTitle = [businessDictionary valueForKey:@"name"];
+                    NSString *businessCity = [businessDictionary valueForKey:@"city"];
+                    
+                   
+                    //we will have to convert this from a string to an NSURL before use
+                    NSString *businessUrl = [businessDictionary valueForKey:@"url"];
+                    
+                    
+                    //we will have to convert this from a string to an NSURL then a UIImage before use
+                    NSString *businessThumbnail = [businessDictionary valueForKey:@"photo_url_small"];
+                    
+                    
+                    
                     
                     float businessLatitude = [businessLatitudeString floatValue];
                     float businessLongitude = [businessLongitudeString floatValue];
@@ -152,7 +165,19 @@
                     
                     NSLog(@"lat %f lon %f", businessLatitude, businessLongitude);
                     
+                    Annotation *newAnnotation;
+                    newAnnotation = [[Annotation alloc]init];
                     
+                                        CLLocationCoordinate2D newCoordinate =
+                    {
+                        .latitude = businessLatitude,
+                        .longitude = businessLongitude
+                    };
+                    newAnnotation.coordinate = newCoordinate;
+                    newAnnotation.title = businessTitle;
+                    newAnnotation.subtitle = businessCity;
+                    
+                    [yelpMap addAnnotation:newAnnotation];
                     
                     
                  }
@@ -200,6 +225,37 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
+    CLLocationCoordinate2D mmCoordinate =
+    {
+        //.latitude = 37.78
+        //.longitude = -122.40
+        
+        .latitude = 41.894032f,
+        .longitude = -87.634742f
+    };
+    
+    //mmCoordinate.latitude = 41.894032f;
+    //mmCoordinate.longitude = -87.634742f;
+    
+    
+    MKCoordinateSpan defaultSpan =
+    {
+        .latitudeDelta = 0.02f,
+        .longitudeDelta = 0.02f
+    };
+    
+    MKCoordinateRegion myRegion = {mmCoordinate, defaultSpan};
+    Annotation *myCurrentLocation = [[Annotation alloc] init];
+    myCurrentLocation.title = @"You are here.";
+    myCurrentLocation.coordinate = mmCoordinate;
+    
+    
+    [yelpMap addAnnotation:myCurrentLocation];
+    
+    
+    [yelpMap setRegion:myRegion];
+
+    
     [self submitYelpSearch];
     
 }
@@ -208,6 +264,10 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+    
+    
+    
+    
 }
 
 @end
