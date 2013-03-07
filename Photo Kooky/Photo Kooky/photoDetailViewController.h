@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "Annotation.h"
-//#import <MapKit/MapKit.h>
+#import <MapKit/MapKit.h>
 #import "MMControllerDelegate.h"
+#import <YelpKit/YelpKit.h>
 
 @interface photoDetailViewController : UIViewController <MKMapViewDelegate,CLLocationManagerDelegate>
 {
@@ -22,6 +23,7 @@
 @property (strong, nonatomic) NSString *photoLatitudeForDetailVC;
 @property (strong, nonatomic) NSString *photoLongitudeForDetailVC;
 @property (strong, nonatomic) NSString * photoNameForLabel;
+@property (strong, nonatomic) NSString * searchWord;
 
 //We must implement these two methods to be a corlactionManagerDelegate
 

@@ -198,9 +198,12 @@
         phvc.photoLatitudeForDetailVC = photoLatitude;
         phvc.imageToShow = imageToTransfer;
         phvc.photoNameForLabel = photoName;
+        phvc.searchWord = searchTextField.text;
+        
         
         NSLog(@"the latitude is %@", photoLatitude);
         NSLog(@"the longitude is %@", photoLongitude);
+        
     }
 }
 
