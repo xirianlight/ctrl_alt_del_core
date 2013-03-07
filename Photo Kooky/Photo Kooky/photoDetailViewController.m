@@ -91,22 +91,11 @@ http://api.flickr.com/services/rest/?method=flickr.photos.geo.getLocation&api_ke
               .longitude = photosLongitude
     };
 
-//    CLLocationCoordinate2D mmCoordinate =
-//    {
-//        .latitude = 41.894032f,
-//        .longitude = -87.634742f
-//        
-//        
-//        //        .latitude = photosLatitude,
-//        //        .longitude = photosLongitude
-//    };
-    
     MKCoordinateSpan span =
     {
         .latitudeDelta = 0.002f,
         .longitudeDelta = 0.002f
     };
-    
     
     MKCoordinateRegion myRegion = {mmCoordinate, span};
     
@@ -115,8 +104,7 @@ http://api.flickr.com/services/rest/?method=flickr.photos.geo.getLocation&api_ke
     myAnnotation.title = [NSString stringWithFormat:@"%@", photoTitleLabel.text];
     //myAnnotation.subtitle = @"and Don's nose";
     myAnnotation.coordinate = mmCoordinate;
-    //myAnnotation.annotationType = @"currentLocation";
-    myAnnotation.annotationType = []
+    myAnnotation.annotationType = @"currentLocation";
     
     //draws the map
     [detailMapView setRegion:myRegion];
@@ -136,27 +124,31 @@ http://api.flickr.com/services/rest/?method=flickr.photos.geo.getLocation&api_ke
 //
 // Turn this back on and give it an image resource to show on the map view
 //
--(MKAnnotationView*)mapView:(MKMapView*)mapView viewForAnnotation:(id<MKAnnotation>)annotation
+-(MKPinAnnotationView*)mapView:(MKMapView*)mapView viewForAnnotation:(id<MKAnnotation>)annotation
 {
     
-    if (annotation.annot) {
-        <#statements#>
-    }
-    
     UIButton *detailButton = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
-    MKAnnotationView *annotationView = [mapView dequeueReusableAnnotationViewWithIdentifier:@"myAnnotation"];
+    MKPinAnnotationView *annotationView = [mapView dequeueReusableAnnotationViewWithIdentifier:@"myAnnotation"];
     
     if (annotationView == nil) {
-        annotationView = [[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"myAnnotation"];
+        annotationView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"myAnnotation"];
     }
     
     [detailButton addTarget:self
                      action:@selector(showDetail)
            forControlEvents:UIControlEventTouchUpInside];
-    //pinView.pinColor = MKAnnotationColorPurple;
     annotationView.canShowCallout = YES;
-    annotationView.image = [UIImage imageNamed:@"mobile-makers-logo.png"];
+    //annotationView.image = [UIImage imageNamed:@"mobile-makers-logo.png"];
     annotationView.rightCalloutAccessoryView = detailButton;
+    if ([((Annotation *)annotation).annotationType isEqual: @"currentLocation"])
+    {
+        annotationView.pinColor = MKPinAnnotationColorGreen;
+
+    }
+    else{
+        annotationView.pinColor = MKPinAnnotationColorRed;
+    }
+
     
     return annotationView;
 }
