@@ -73,14 +73,17 @@
     myCurrentLocation.annotationType = @"currentLocation";
     myCurrentLocation.title = @"You are here.";
     myCurrentLocation.coordinate = mmCoordinate;     
-    
-    
+    (MKUserLocation *) myCurrentLocation;
+
     [currentLocationMap addAnnotation:myCurrentLocation];
     
 
      [currentLocationMap setRegion:myRegion];
 
 }
+
+//Attempt to make you are here a blue dot
+
 
 #pragma UITableView methods
 
@@ -215,8 +218,13 @@
     [activityWheel startAnimating];
         //Set search text field as search query text.
     searchText = searchTextField.text;
-        //Request pictures matching search query
- 
+    
+    //String conversion to turn spaces into escape characters.
+
+        NSString *searchText_safe = [searchText stringByReplacingOccurrencesOfString:@" " withString:@"%20"];
+    searchText = searchText_safe;
+    
+    
     //old search string without lat and lon
 //    NSString *flickrURLString =[NSString stringWithFormat:@"http://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=b4a287d18b3f7398ffb4ab9f1b961e22&lat=41.894032&lon=-87.634742&radius=3&extras=geo&accuracy=14&tags=%@&format=json&nojsoncallback=1", searchText];
     
