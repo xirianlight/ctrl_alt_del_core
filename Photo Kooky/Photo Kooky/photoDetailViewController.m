@@ -52,6 +52,7 @@ http://api.flickr.com/services/rest/?method=flickr.photos.geo.getLocation&api_ke
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
 }
 
 -(void)viewDidAppear:(BOOL)animated
