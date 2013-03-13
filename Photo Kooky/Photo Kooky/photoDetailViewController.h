@@ -12,6 +12,7 @@
 #import "MMControllerDelegate.h"
 #import <YelpKit/YelpKit.h>
 
+
 @interface photoDetailViewController : UIViewController <MKMapViewDelegate,CLLocationManagerDelegate>
 {
     UIImage* imageToShow;

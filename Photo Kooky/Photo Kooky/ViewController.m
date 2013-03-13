@@ -70,6 +70,7 @@
     
     MKCoordinateRegion myRegion = {mmCoordinate, defaultSpan};
     Annotation *myCurrentLocation = [[Annotation alloc] init];
+    myCurrentLocation.annotationType = @"currentLocation";
     myCurrentLocation.title = @"You are here.";
     myCurrentLocation.coordinate = mmCoordinate;     
     
@@ -353,28 +354,34 @@
 
 
 
-//-(MKAnnotationView*)mapView:(MKMapView*)mapView viewForAnnotation:(id<MKAnnotation>)annotation
-//{
-//    UIButton *detailButton = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
-//    MKAnnotationView *annotationView = [mapView dequeueReusableAnnotationViewWithIdentifier:@"myAnnotation"];
-//    
-//    if (annotationView == nil) {
-//        annotationView = [[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"myAnnotation"];
-//    }
-//    
-//    [detailButton addTarget:self
-//                     action:@selector(showDetail)
-//           forControlEvents:UIControlEventTouchUpInside];
-//    //pinView.pinColor = MKAnnotationColorPurple;
-//    annotationView.canShowCallout = YES;
-
-//    annotationView.image = [UIImage imageNamed:@"mobile-makers-logo.png"];
-
-//    annotationView.image = [UIImage imageNamed:@"burger.png"];
-//    annotationView.rightCalloutAccessoryView = detailButton;
-//    
-//    return annotationView;
-//}
+-(MKPinAnnotationView*)mapView:(MKMapView*)mapView viewForAnnotation:(id<MKAnnotation>)annotation
+{
+    
+    UIButton *detailButton = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+    MKPinAnnotationView *annotationView = [mapView dequeueReusableAnnotationViewWithIdentifier:@"myAnnotation"];
+    
+    if (annotationView == nil) {
+        annotationView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"myAnnotation"];
+    }
+    
+    [detailButton addTarget:self
+                     action:@selector(showDetail)
+           forControlEvents:UIControlEventTouchUpInside];
+    annotationView.canShowCallout = YES;
+    //annotationView.image = [UIImage imageNamed:@"mobile-makers-logo.png"];
+    annotationView.rightCalloutAccessoryView = detailButton;
+    if ([((Annotation *)annotation).annotationType isEqual: @"currentLocation"])
+    {
+        annotationView.pinColor = MKPinAnnotationColorGreen;
+        
+    }
+    else{
+        annotationView.pinColor = MKPinAnnotationColorRed;
+    }
+    
+    
+    return annotationView;
+}
 
 
 
