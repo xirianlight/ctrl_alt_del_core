@@ -262,7 +262,7 @@ http://api.flickr.com/services/rest/?method=flickr.photos.geo.getLocation&api_ke
                  
                  NSLog(@"lat %f lon %f", businessLatitude, businessLongitude);
                  
-                 YKMKAnnotation *newAnnotation;
+                 Annotation *newAnnotation;
                  newAnnotation = [[Annotation alloc]init];
                  
                  CLLocationCoordinate2D newCoordinate =

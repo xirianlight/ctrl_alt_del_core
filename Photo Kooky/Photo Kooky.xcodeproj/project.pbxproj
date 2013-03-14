@@ -21,6 +21,9 @@
 		6B59BCE216D5A54E003FC5D7 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B59BCE016D5A54E003FC5D7 /* MainStoryboard.storyboard */; };
 		6B59BCE516D5A54E003FC5D7 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B59BCE416D5A54E003FC5D7 /* ViewController.m */; };
 		6B59BCED16D6BB94003FC5D7 /* photoDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B59BCEC16D6BB94003FC5D7 /* photoDetailViewController.m */; };
+		6B6F198016F1275E007CFBF3 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6B6F197E16F1275E007CFBF3 /* Model.xcdatamodeld */; };
+		6B6F198316F12D43007CFBF3 /* FlikrEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B6F198216F12D43007CFBF3 /* FlikrEntity.m */; };
+		6B6F198516F12D8A007CFBF3 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B6F198416F12D8A007CFBF3 /* CoreData.framework */; };
 		6BA27C4516E50AD50007386F /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BA27C4416E50AD50007386F /* QuartzCore.framework */; };
 		6BA27C6F16E513710007386F /* libYelpKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BA27C6A16E512F00007386F /* libYelpKit.a */; };
 		6BC5802116DDBAE600CE65E8 /* MMControllerDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BC5802016DDBAE600CE65E8 /* MMControllerDelegate.m */; };
@@ -74,6 +77,10 @@
 		6B59BCE416D5A54E003FC5D7 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		6B59BCEB16D6BB94003FC5D7 /* photoDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = photoDetailViewController.h; sourceTree = "<group>"; };
 		6B59BCEC16D6BB94003FC5D7 /* photoDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = photoDetailViewController.m; sourceTree = "<group>"; };
+		6B6F197F16F1275E007CFBF3 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		6B6F198116F12D43007CFBF3 /* FlikrEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlikrEntity.h; sourceTree = "<group>"; };
+		6B6F198216F12D43007CFBF3 /* FlikrEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlikrEntity.m; sourceTree = "<group>"; };
+		6B6F198416F12D8A007CFBF3 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		6BA27C4416E50AD50007386F /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		6BA27C6316E512F00007386F /* YelpKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = YelpKit.xcodeproj; path = ../YelpKit2/YelpKit.xcodeproj; sourceTree = "<group>"; };
 		6BC5801F16DDBAE600CE65E8 /* MMControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMControllerDelegate.h; sourceTree = "<group>"; };
@@ -88,6 +95,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6B6F198516F12D8A007CFBF3 /* CoreData.framework in Frameworks */,
 				6BA27C6F16E513710007386F /* libYelpKit.a in Frameworks */,
 				6BA27C4516E50AD50007386F /* QuartzCore.framework in Frameworks */,
 				6BC5802316DDC17200CE65E8 /* CoreLocation.framework in Frameworks */,
@@ -122,6 +130,7 @@
 		6B59BCC716D5A54E003FC5D7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6B6F198416F12D8A007CFBF3 /* CoreData.framework */,
 				6BA27C4416E50AD50007386F /* QuartzCore.framework */,
 				6BC5802216DDC17200CE65E8 /* CoreLocation.framework */,
 				6B2545F616DD53D100D61576 /* MapKit.framework */,
@@ -146,9 +155,11 @@
 				6B2545F416DD527900D61576 /* Annotation.m */,
 				6BC5801F16DDBAE600CE65E8 /* MMControllerDelegate.h */,
 				6BC5802016DDBAE600CE65E8 /* MMControllerDelegate.m */,
-				6B59BCCF16D5A54E003FC5D7 /* Supporting Files */,
 				6BFFBBB816E553970034AFA1 /* MMYelpMapVC.h */,
 				6BFFBBB916E553970034AFA1 /* MMYelpMapVC.m */,
+				6B6F198116F12D43007CFBF3 /* FlikrEntity.h */,
+				6B6F198216F12D43007CFBF3 /* FlikrEntity.m */,
+				6B59BCCF16D5A54E003FC5D7 /* Supporting Files */,
 			);
 			path = "Photo Kooky";
 			sourceTree = "<group>";
@@ -156,6 +167,7 @@
 		6B59BCCF16D5A54E003FC5D7 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				6B6F197E16F1275E007CFBF3 /* Model.xcdatamodeld */,
 				6B59BCD016D5A54E003FC5D7 /* Photo Kooky-Info.plist */,
 				6B59BCD116D5A54E003FC5D7 /* InfoPlist.strings */,
 				6B59BCD416D5A54E003FC5D7 /* main.m */,
@@ -273,6 +285,8 @@
 				6B2545F516DD527900D61576 /* Annotation.m in Sources */,
 				6BC5802116DDBAE600CE65E8 /* MMControllerDelegate.m in Sources */,
 				6BFFBBBA16E553970034AFA1 /* MMYelpMapVC.m in Sources */,
+				6B6F198016F1275E007CFBF3 /* Model.xcdatamodeld in Sources */,
+				6B6F198316F12D43007CFBF3 /* FlikrEntity.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -427,6 +441,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		6B6F197E16F1275E007CFBF3 /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				6B6F197F16F1275E007CFBF3 /* Model.xcdatamodel */,
+			);
+			currentVersion = 6B6F197F16F1275E007CFBF3 /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 6B59BCBD16D5A54E003FC5D7 /* Project object */;
 }

@@ -119,11 +119,14 @@
     
         //collecting all the data from photosDictionary
     NSDictionary *dictionaryForSinglePhoto = [arrayForPhotosArray objectAtIndex:indexPath.row];
+
+        
     NSString *farmString = [dictionaryForSinglePhoto valueForKey:@"farm"];
     NSString *serverString = [dictionaryForSinglePhoto valueForKey:@"server"];
     NSString *idString = [dictionaryForSinglePhoto valueForKey:@"id"];
         //The following (idString) bay be removable, since we made it to originally look up photo GPS data.
     idStringToPass = idString;
+    
     NSString *secretString = [dictionaryForSinglePhoto valueForKey:@"secret"];
     NSString *titleString  = [dictionaryForSinglePhoto valueForKey:@"title"];    
         //New code to include photo Longitude and Latitude as outputs.
@@ -132,8 +135,17 @@
             //Logs out the titles of photos as they load. Nice
     NSLog(@"%@", titleString);
         //making that info into a request for a photo
+    
+        
+        
     NSString *photoURLString = [NSString stringWithFormat:@"http://farm%@.staticflickr.com/%@/%@_%@_m.jpg", farmString, serverString, idString, secretString];
-    NSURL *photoURL = [NSURL URLWithString:photoURLString];    
+    NSURL *photoURL = [NSURL URLWithString:photoURLString];
+        
+        
+        
+        
+        
+        
         //making the request online for the photo
     NSData *photoData = [NSData dataWithContentsOfURL:photoURL];
     UIImage *photoImage = [UIImage imageWithData:photoData];
@@ -221,7 +233,7 @@
     
     //String conversion to turn spaces into escape characters.
 
-        NSString *searchText_safe = [searchText stringByReplacingOccurrencesOfString:@" " withString:@"%20"];
+    NSString *searchText_safe = [searchText stringByReplacingOccurrencesOfString:@" " withString:@"%20"];
     searchText = searchText_safe;
     
     
