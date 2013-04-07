@@ -13,4 +13,6 @@ This piece of the core was abandoned for a different code-base before further wo
 All the back buttons are unwind segues in order to preserve previous states without delving too deeply into persistence.  To see where this project ended up, check out
 https://github.com/gBit/thePeanutGallery
 
+p.s. if you clone this or want to try running it, PLEASE be sure to get the YelpKit submodule running, or your venture will be quite short indeed.
+
 Thanks!
