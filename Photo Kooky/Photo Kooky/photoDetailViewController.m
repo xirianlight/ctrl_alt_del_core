@@ -156,10 +156,10 @@ http://api.flickr.com/services/rest/?method=flickr.photos.geo.getLocation&api_ke
 //
 //
 //    //Detail Disclosure button behavior
-//-(void)showDetail
-//{
-//    NSLog(@"Detail disclosure button pressed");
-//}
+-(void)showDetail
+{
+    NSLog(@"Detail disclosure button pressed");
+}
 
 
 
