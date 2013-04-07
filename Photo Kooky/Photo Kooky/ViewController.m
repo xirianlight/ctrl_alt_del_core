@@ -378,29 +378,30 @@
 }
 
 
-
+//Pin annotation view customization
 -(MKPinAnnotationView*)mapView:(MKMapView*)mapView viewForAnnotation:(id<MKAnnotation>)annotation
 {
     
-    UIButton *detailButton = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
     MKPinAnnotationView *annotationView = [mapView dequeueReusableAnnotationViewWithIdentifier:@"myAnnotation"];
     
     if (annotationView == nil) {
         annotationView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"myAnnotation"];
     }
-    
-    [detailButton addTarget:self
-                     action:@selector(showDetail)
-           forControlEvents:UIControlEventTouchUpInside];
+
     annotationView.canShowCallout = YES;
     //annotationView.image = [UIImage imageNamed:@"mobile-makers-logo.png"];
-    annotationView.rightCalloutAccessoryView = detailButton;
     if ([((Annotation *)annotation).annotationType isEqual: @"currentLocation"])
     {
         annotationView.pinColor = MKPinAnnotationColorGreen;
         
     }
     else{
+        UIButton *detailButton = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];        
+        [detailButton addTarget:self
+                         action:@selector(showDetail)
+               forControlEvents:UIControlEventTouchUpInside];
+        annotationView.rightCalloutAccessoryView = detailButton;
+
         annotationView.pinColor = MKPinAnnotationColorRed;
     }
     
@@ -408,7 +409,12 @@
     return annotationView;
 }
 
-
+//This method needs to be rigged up to perform the same segue 
+-(void)showDetail
+{
+    NSLog(@"Detail disclosure button pressed, for now, tap the tableView to proceed");
+    //[self performSegueWithIdentifier:@"toDetailSegue" sender:nil];
+}
 
 //END ADDITIONS THURS 2/28.....................
 
