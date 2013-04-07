@@ -156,10 +156,10 @@ http://api.flickr.com/services/rest/?method=flickr.photos.geo.getLocation&api_ke
 //
 //
 //    //Detail Disclosure button behavior
-//-(void)showDetail
-//{
-//    NSLog(@"Detail disclosure button pressed");
-//}
+-(void)showDetail
+{
+    NSLog(@"Detail disclosure button pressed");
+}
 
 
 
@@ -262,7 +262,7 @@ http://api.flickr.com/services/rest/?method=flickr.photos.geo.getLocation&api_ke
                  
                  NSLog(@"lat %f lon %f", businessLatitude, businessLongitude);
                  
-                 YKMKAnnotation *newAnnotation;
+                 Annotation *newAnnotation;
                  newAnnotation = [[Annotation alloc]init];
                  
                  CLLocationCoordinate2D newCoordinate =

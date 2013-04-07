@@ -182,6 +182,11 @@
     return YES;
 }
 
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
+{
+    searchTextField.text = @"";
+}
+
 #pragma Storyboard and segues
 
 -(IBAction)unwindToSearchTableView:(UIStoryboardSegue *)segue{
